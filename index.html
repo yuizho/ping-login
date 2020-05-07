@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/pin-login/pin-login.css">
+</head>
+
+<body>
+    <h1>Pin Login w/ HTML, CSS & JS</h1>
+    <div class="pin-login" id="mainPinLogin">
+        <!-- ! this naming style is BEM -->
+        <input type="password" readonly class="pin-login__text pin">
+        <div class="pin-login__numpad">
+        </div>
+    </div>
+    <script src="./pin-login/pin-login.js"></script>
+    <script>
+        new PinLogin({
+            el: document.getElementById("mainPinLogin"),
+            loginEndpoint: "http://localhost:8000/login",
+            redirectTo: "dashboard.html",
+            maxNumbers: 4
+        });
+    </script>
+</body>
+
+</html>
