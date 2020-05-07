@@ -29,8 +29,9 @@ class PinLogin {
             "backspace", "0", "done"
         ];
 
+        const fragment = document.createDocumentFragment();
         padLayout.forEach(key => {
-            const insertBreak = key.search(/3|6|9/) !== -1;
+            const needsBreak = key.search(/3|6|9/) !== -1;
             const keyEl = document.createElement("div");
 
             keyEl.classList.add("pin-login__key");
@@ -39,12 +40,13 @@ class PinLogin {
             keyEl.addEventListener("click", () => {
                 this._handleKeyPress(key)
             });
-            this.el.numpad.appendChild(keyEl);
+            fragment.appendChild(keyEl);
 
-            if (insertBreak) {
-                this.el.numpad.appendChild(document.createElement("br"));
+            if (needsBreak) {
+                fragment.appendChild(document.createElement("br"));
             }
         });
+        this.el.numpad.appendChild(fragment);
     }
 
     _handleKeyPress(key) {
